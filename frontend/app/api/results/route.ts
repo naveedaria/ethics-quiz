@@ -9,7 +9,7 @@ export async function GET() {
     return NextResponse.json(results);
   } catch (error) {
     return NextResponse.json(
-      { error: error.message },
+      { error: error instanceof Error ? error.message : 'Unknown error occurred' },
       { status: 500 }
     );
   }
