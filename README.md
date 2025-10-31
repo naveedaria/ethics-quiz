@@ -131,16 +131,28 @@ The application is fully serverless and can be deployed entirely on Vercel as a 
    - Import your GitHub repository (`ethics-quiz`)
    - Vercel will auto-detect it's a Next.js project
 
-4. **Configure Build Settings**
-   - **Root Directory**: `frontend` (click "Edit" and set this)
-   - **Framework Preset**: Next.js (auto-detected)
-   - **Build Command**: `npm run build` (auto-detected)
-   - **Output Directory**: `.next` (auto-detected)
-   - **Install Command**: `npm install` (auto-detected)
-
-   **OR** if deploying from root (with `vercel.json`):
-   - Leave Root Directory blank
-   - Vercel will use the `vercel.json` configuration
+4. **Configure Build Settings (IMPORTANT!)**
+   
+   ⚠️ **You MUST set the Root Directory to `frontend`**
+   
+   Steps:
+   - Click "Edit" next to "Root Directory"
+   - Enter: `frontend`
+   - Click "Save"
+   
+   **Then verify Build & Development Settings:**
+   - Go to Settings → General → Build & Development Settings
+   - **Install Command**: Should be `npm install` (or blank for auto-detect)
+     - ❌ **NOT** `cd frontend && npm install`
+     - ✅ **JUST** `npm install`
+   - **Build Command**: Should be `npm run build` (or blank for auto-detect)
+     - ❌ **NOT** `cd frontend && npm run build`
+     - ✅ **JUST** `npm run build`
+   - **Output Directory**: Should be `.next` (auto-detected)
+   
+   ⚠️ **Critical**: When Root Directory is `frontend`, commands run FROM that directory, so no `cd frontend` needed!
+   
+   ✅ **This is the critical step** - Vercel needs to know your Next.js app is in the `frontend` folder!
 
 5. **Deploy!**
    - Click "Deploy"
@@ -222,10 +234,20 @@ To add environment variables:
 
 ### Troubleshooting
 
-**Build fails?**
-- Check that `frontend/data/questions.json` exists
-- Verify Node.js version (Vercel uses Node 18+ by default)
-- Check build logs in Vercel dashboard
+**"Command 'cd frontend && npm install' exited with 1" error?**
+- ✅ **Solution**: You have custom build commands set that include `cd frontend`
+- When Root Directory is set to `frontend`, you should NOT include `cd frontend` in commands
+- Go to your project → Settings → General → Build & Development Settings
+- **Install Command**: Should be `npm install` (NOT `cd frontend && npm install`)
+- **Build Command**: Should be `npm run build` (NOT `cd frontend && npm run build`)
+- **Output Directory**: Should be `.next` (auto-detected)
+- Click "Save" and redeploy
+
+**"No Next.js version detected" error?**
+- ✅ **Solution**: Set Root Directory to `frontend` in Vercel project settings
+- Go to your project → Settings → General → Root Directory
+- Enter: `frontend`
+- Save and redeploy
 
 **Session not persisting?**
 - This is expected with serverless functions
@@ -236,6 +258,7 @@ To add environment variables:
 - Verify routes are in `frontend/app/api/` directory
 - Check function logs in Vercel dashboard
 - Ensure routes export proper HTTP methods (GET, POST)
+- Make sure Root Directory is set to `frontend`
 
 ### Alternative: Multi-Service Deployment (If Needed)
 

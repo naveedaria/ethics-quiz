@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "Ethics quiz website - deployable to Vercel",
   "scripts": {
-    "dev": "cd frontend && npm run dev",
-    "build": "cd frontend && npm run build",
-    "start": "cd frontend && npm start",
-    "install:all": "cd frontend && npm install"
+    "dev": "npm run dev",
+    "build": "npm run build",
+    "start": "npm start",
+    "install:all": "npm install"
   },
   "keywords": [],
   "author": "",
