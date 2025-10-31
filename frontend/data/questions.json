@@ -1,0 +1,280 @@
+{
+    "moral_quiz": [
+      {
+        "id": 1,
+        "title": "The Trolley Problem",
+        "scenario": "A runaway trolley is speeding toward five workers tied to a track. You can pull a lever to divert it onto another track, but there’s one person tied there instead.",
+        "question": "Would you pull the lever to save five people by sacrificing one?",
+        "answers": {
+          "yes": {
+            "theory_alignment": ["Utilitarianism", "Consequentialism"],
+            "reasoning": "You’re choosing the option that saves the most people — the focus is on the outcome, not the method.",
+            "everyday_example": "Like recalling a defective product even though it puts one small company out of business but saves many consumers from harm."
+          },
+          "no": {
+            "theory_alignment": ["Deontological Ethics", "Kantian Ethics"],
+            "reasoning": "It’s wrong to deliberately harm someone, even if it means saving more people.",
+            "everyday_example": "Like refusing to plagiarize even when your entire group could pass because of it."
+          }
+        },
+        "follow_up_questions": [
+          {
+            "question": "Does moral responsibility change if you didn’t cause the situation?",
+            "answer": "Some say yes—if you didn’t cause it, you’re less responsible for fixing it in a harmful way. Others say doing nothing when you could help is still a moral choice."
+          },
+          {
+            "question": "Would your decision change if the one person was a loved one?",
+            "answer": "Most people say yes. Emotional attachment overrides logic for many — we instinctively value those closest to us."
+          }
+        ],
+        "group_discussion_prompts": [
+          "Would society function if everyone acted utilitarian all the time?",
+          "Is it better to be fair or kind in life-or-death scenarios?",
+          "Should emergency workers or AI systems make these 'numbers vs. values' decisions?"
+        ]
+      },
+      {
+        "id": 2,
+        "title": "The Fat Man Variation",
+        "scenario": "You are on a bridge above a track where a trolley is about to kill five people. You can stop it by pushing a large man onto the track. He’ll die, but the others will live.",
+        "question": "Would you push him?",
+        "answers": {
+          "yes": {
+            "theory_alignment": ["Act Utilitarianism"],
+            "reasoning": "Sacrificing one to save five creates the best total outcome.",
+            "everyday_example": "Like prioritizing resources for people most likely to survive in a crisis."
+          },
+          "no": {
+            "theory_alignment": ["Deontological Ethics", "Virtue Ethics"],
+            "reasoning": "You shouldn’t physically harm someone on purpose, no matter the benefit.",
+            "everyday_example": "Like refusing to injure one person to distract an attacker from several others."
+          }
+        },
+        "follow_up_questions": [
+          {
+            "question": "Is there a difference between pulling a lever and pushing someone?",
+            "answer": "Yes — one feels indirect while the other feels personally violent. Physical involvement amplifies emotional and moral weight."
+          },
+          {
+            "question": "Do emotional factors make a moral difference?",
+            "answer": "They often do — emotion can reveal our intuitive sense of right and wrong beyond logic."
+          }
+        ],
+        "group_discussion_prompts": [
+          "Would your country’s laws consider the push murder?",
+          "Is moral disgust a reliable guide or just an emotional bias?",
+          "If feelings conflict with logic, which should win?"
+        ]
+      },
+      {
+        "id": 3,
+        "title": "The Organ Donor Dilemma",
+        "scenario": "A doctor can save five dying patients by taking organs from a healthy person without consent. Doing so would kill the healthy person.",
+        "question": "Should the doctor do it?",
+        "answers": {
+          "yes": {
+            "theory_alignment": ["Extreme Utilitarianism"],
+            "reasoning": "Five lives saved outweigh one lost — math-based morality.",
+            "everyday_example": "Like diverting limited disaster aid to groups where it saves most lives even if some regions get nothing."
+          },
+          "no": {
+            "theory_alignment": ["Rights-Based Ethics", "Deontological Ethics"],
+            "reasoning": "People have a right to autonomy and life that can’t be overridden for others’ benefit.",
+            "everyday_example": "Like refusing to share someone’s private data 'for the greater good' without their permission."
+          }
+        },
+        "follow_up_questions": [
+          {
+            "question": "Would it be different if the patient consented?",
+            "answer": "Yes — voluntary sacrifice honors autonomy and transforms the moral equation completely."
+          },
+          {
+            "question": "What makes bodily autonomy special?",
+            "answer": "Your body is your ultimate property — controlling it shows respect for personal boundaries and freedom."
+          }
+        ],
+        "group_discussion_prompts": [
+          "Should society ever force one person to help many, such as mandatory organ donation?",
+          "Would you change your view if your family members were the five patients?",
+          "Can ends ever justify means in real-life medicine?"
+        ]
+      },
+      {
+        "id": 4,
+        "title": "The Lifeboat Dilemma",
+        "scenario": "Your lifeboat has room for eight, but ten are aboard. Keeping all means everyone sinks. Two must go.",
+        "question": "Would you sacrifice two people to save the rest?",
+        "answers": {
+          "yes": {
+            "theory_alignment": ["Utilitarianism", "Pragmatic Ethics"],
+            "reasoning": "Choosing the least tragic option prevents everyone from dying.",
+            "everyday_example": "Like downsizing a company to save it from bankruptcy."
+          },
+          "no": {
+            "theory_alignment": ["Virtue Ethics", "Deontological Ethics"],
+            "reasoning": "It’s immoral to choose who dies; fairness and dignity matter even in crisis.",
+            "everyday_example": "Like refusing to play favorites when dividing limited food in a shelter."
+          }
+        },
+        "follow_up_questions": [
+          {
+            "question": "How should the two people be chosen?",
+            "answer": "Random choice or volunteering feels most fair, as it spreads moral burden evenly."
+          },
+          {
+            "question": "Does randomness change responsibility?",
+            "answer": "Yes — random decisions feel more neutral and just compared to favoritism."
+          }
+        ],
+        "group_discussion_prompts": [
+          "Would you volunteer yourself?",
+          "Should moral systems prioritize fairness or survival?",
+          "How do real-life leaders handle similarly tragic trade-offs?"
+        ]
+      },
+      {
+        "id": 5,
+        "title": "The AI Car Dilemma",
+        "scenario": "A self-driving car must choose between hitting one pedestrian or staying on course and killing its passengers.",
+        "question": "Should it sacrifice the passenger to save more lives?",
+        "answers": {
+          "yes": {
+            "theory_alignment": ["Utilitarianism"],
+            "reasoning": "Choosing the option with fewer deaths makes logical sense.",
+            "everyday_example": "Like software prioritizing hospital patients based on highest survival chance."
+          },
+          "no": {
+            "theory_alignment": ["Deontological Ethics"],
+            "reasoning": "Machines shouldn’t intentionally harm the innocent. The car must protect its rider.",
+            "everyday_example": "Like refusing to hack someone else’s device even when it could prevent a system crash."
+          }
+        },
+        "follow_up_questions": [
+          {
+            "question": "Who’s responsible — the driver, the programmer, or the company?",
+            "answer": "Generally the designer or company — the AI acts on pre-coded moral choices."
+          },
+          {
+            "question": "Should people pick their car’s ethics setting?",
+            "answer": "Probably not — personalization might normalize selfish decisions."
+          }
+        ],
+        "group_discussion_prompts": [
+          "Would you buy a car that might sacrifice you to save others?",
+          "Should AI follow moral rules or legal ones?",
+          "Should morality be programmable at all?"
+        ]
+      },
+      {
+        "id": 6,
+        "title": "The Truth vs. Harm Dilemma",
+        "scenario": "Your friend asks your honest opinion about something very personal. The truth might deeply hurt them; a lie could protect their feelings.",
+        "question": "Should you tell the truth?",
+        "answers": {
+          "yes": {
+            "theory_alignment": ["Kantian Ethics", "Virtue Ethics"],
+            "reasoning": "Truth honors honesty and trust — relationships built on truth are stronger.",
+            "everyday_example": "Like being upfront about someone’s mistakes before they escalate into something worse."
+          },
+          "no": {
+            "theory_alignment": ["Care Ethics"],
+            "reasoning": "Compassion and kindness can matter more than brutal honesty.",
+            "everyday_example": "Like telling a nervous performer they did great to boost their confidence."
+          }
+        },
+        "follow_up_questions": [
+          {
+            "question": "Is lying always wrong?",
+            "answer": "In principle yes, but white lies can protect feelings without harm, especially if the intent is kind."
+          },
+          {
+            "question": "Would you want people to lie to you for your own good?",
+            "answer": "Depends — most value honesty but prefer tact rather than brutal truth."
+          }
+        ],
+        "group_discussion_prompts": [
+          "Is honesty the best policy or just the easiest justification?",
+          "When does empathy outweigh truth?",
+          "Do cultural norms affect honesty — are white lies more acceptable in some places?"
+        ]
+      },
+      {
+        "id": 7,
+        "title": "The Charity Dilemma",
+        "scenario": "You live comfortably. Donating half your income could save many lives through effective charities, but it means major lifestyle changes.",
+        "question": "Do you have a duty to give that much?",
+        "answers": {
+          "yes": {
+            "theory_alignment": ["Utilitarianism", "Altruism"],
+            "reasoning": "You should reduce suffering if you can do so without ruining yourself.",
+            "everyday_example": "Like skipping expensive luxuries to fund education for less fortunate kids."
+          },
+          "no": {
+            "theory_alignment": ["Egoism", "Virtue Ethics (Moderation)"],
+            "reasoning": "You’re allowed to prioritize personal happiness and future security.",
+            "everyday_example": "Like saving for your retirement instead of donating now."
+          }
+        },
+        "follow_up_questions": [
+          {
+            "question": "Is not helping the same as causing harm?",
+            "answer": "Logically they can be similar, but morally most people feel omission is less blameworthy than direct harm."
+          },
+          {
+            "question": "How much sacrifice is enough?",
+            "answer": "Probably up to the point where further giving hurts your ability to live decently or help sustainably."
+          }
+        ],
+        "group_discussion_prompts": [
+          "Would you feel guilty living comfortably if others suffer?",
+          "Should moral duty depend on wealth or empathy?",
+          "Does charity exist to make us feel better or to actually fix problems?"
+        ]
+      },
+      {
+        "id": 8,
+        "title": "The Privacy vs. Security Dilemma",
+        "scenario": "A government suggests monitoring everyone’s messages and calls to prevent terrorism, but that means losing personal privacy.",
+        "question": "Should privacy be traded for safety?",
+        "answers": {
+          "yes": {
+            "theory_alignment": ["Utilitarianism", "Social Contract Theory"],
+            "reasoning": "Preventing large-scale harm may justify smaller intrusions of privacy.",
+            "everyday_example": "Like sharing health data during a pandemic to keep everyone safer."
+          },
+          "no": {
+            "theory_alignment": ["Rights-Based Ethics", "Deontological Ethics"],
+            "reasoning": "Privacy is a core right — giving it up risks government abuse and loss of freedom.",
+            "everyday_example": "Like refusing to post personal details on social media to protect autonomy."
+          }
+        },
+        "follow_up_questions": [
+          {
+            "question": "How much privacy is reasonable to sacrifice?",
+            "answer": "Minimal — many people accept checks like airport screening but not constant monitoring."
+          },
+          {
+            "question": "Who ensures surveillance is kept ethical?",
+            "answer": "Ideally, independent oversight with transparent laws — unchecked power leads to abuse."
+          }
+        ],
+        "group_discussion_prompts": [
+          "Would people trade privacy if threats felt closer to home?",
+          "Can safety ever truly coexist with privacy in the digital age?",
+          "Who defines what counts as 'security' — the people or the government?"
+        ]
+      }
+    ],
+    "ethical_theories": {
+      "Utilitarianism": "The right choice creates the most good for the most people. Like solving a problem that helps everyone, even if one person dislikes it.",
+      "Deontological Ethics": "Actions have built-in moral rules—some things are simply wrong no matter the outcome.",
+      "Virtue Ethics": "Morality is about being a good person—honest, compassionate, brave—not just following rules.",
+      "Care Ethics": "Relationships and empathy guide morality more than laws or calculations.",
+      "Social Contract Theory": "Moral rules are agreements for mutual safety and fairness, like obeying traffic lights so everyone’s safe.",
+      "Egoism": "Taking care of yourself first isn’t selfish—it makes you strong enough to help others later.",
+      "Rights-Based Ethics": "Everyone deserves basic rights like privacy and life—those shouldn’t be broken even for bigger benefits.",
+      "Altruism": "Helping others selflessly is the highest good, like giving time or money without expecting anything back.",
+      "Consequentialism": "Only results matter. If the ending is good, the action can be justified.",
+      "Kantian Ethics": "Do only what you’d want everyone else to do in the same situation—universal morality."
+    }
+  }
