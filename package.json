@@ -1,7 +1,7 @@
 {
   "name": "ethics-quiz",
   "version": "1.0.0",
-  "description": "Ethics quiz website - deployable to Vercel",
+  "description": "Ethics quiz website",
   "scripts": {
     "dev": "npm run dev",
     "build": "npm run build",
