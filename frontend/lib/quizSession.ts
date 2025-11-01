@@ -1,6 +1,36 @@
 // Shared quiz session state
 // In production, consider using Vercel KV for persistence across serverless invocations
-let quizSession = {
+
+interface Participant {
+  id: string;
+  name: string;
+  icon: string;
+  answers: Record<number, 'yes' | 'no'>;
+}
+
+interface AnswerHistoryEntry {
+  questionId: number;
+  questionTitle: string;
+  questionText: string;
+  answer: 'yes' | 'no';
+  theories: string[];
+}
+
+interface QuizSession {
+  participants: Participant[];
+  admin: string | null;
+  adminPassword: string;
+  currentQuestionIndex: number | null;
+  answers: Record<string, Record<number, 'yes' | 'no'>>;
+  answerHistory: Record<string, AnswerHistoryEntry[]>;
+  quizStarted: boolean;
+  showResults: boolean;
+  questionLocked: boolean;
+  lockCountdown: number | null;
+  lastUpdate: number;
+}
+
+let quizSession: QuizSession = {
   participants: [],
   admin: null,
   adminPassword: 'Password123',
@@ -13,6 +43,28 @@ let quizSession = {
   lockCountdown: null, // timestamp when lock started
   lastUpdate: Date.now()
 };
+
+interface QuestionsData {
+  moral_quiz?: Array<{
+    id: number;
+    title?: string;
+    scenario?: string;
+    question: string;
+    answers?: {
+      yes?: {
+        theory_alignment?: string[];
+        reasoning?: string;
+        everyday_example?: string;
+      };
+      no?: {
+        theory_alignment?: string[];
+        reasoning?: string;
+        everyday_example?: string;
+      };
+    };
+  }>;
+  ethical_theories?: Record<string, string>;
+}
 
 // Available icons for participants
 const icons = ['🎭', '🎨', '🎪', '🎯', '🎲', '🎸', '🎺', '🎻', '🎬', '🎮', '🎯', '🎲'];
@@ -31,12 +83,12 @@ export function getQuizSession() {
   return quizSession;
 }
 
-export function updateQuizSession(updates) {
+export function updateQuizSession(updates: Partial<typeof quizSession>) {
   quizSession = { ...quizSession, ...updates, lastUpdate: Date.now() };
   return quizSession;
 }
 
-export function addParticipant(name, participantId?: string) {
+export function addParticipant(name: string, participantId?: string) {
   // If participantId is provided, check if they already exist
   if (participantId) {
     const existingParticipant = quizSession.participants.find(p => p.id === participantId);
@@ -68,19 +120,19 @@ export function addParticipant(name, participantId?: string) {
   return participant;
 }
 
-export function removeParticipant(participantId) {
+export function removeParticipant(participantId: string) {
   quizSession.participants = quizSession.participants.filter(p => p.id !== participantId);
   delete quizSession.answers[participantId];
   delete quizSession.answerHistory[participantId];
   quizSession.lastUpdate = Date.now();
 }
 
-export function setAdmin(adminId) {
+export function setAdmin(adminId: string) {
   quizSession.admin = adminId;
   quizSession.lastUpdate = Date.now();
 }
 
-export function submitAnswer(participantId, questionId, answer, questionsData) {
+export function submitAnswer(participantId: string, questionId: number, answer: 'yes' | 'no', questionsData: QuestionsData) {
   const participant = quizSession.participants.find(p => p.id === participantId);
   if (!participant) {
     throw new Error('Not a participant');
@@ -114,7 +166,7 @@ export function submitAnswer(participantId, questionId, answer, questionsData) {
     questionTitle: question?.title || `Question ${questionId}`,
     questionText: question?.question || '',
     answer,
-    theories: question?.answers[answer]?.theory_alignment || []
+    theories: question?.answers?.[answer]?.theory_alignment || []
   };
   
   const existingIndex = quizSession.answerHistory[participantId].findIndex(
@@ -141,7 +193,7 @@ export function unlockQuestion() {
   quizSession.lastUpdate = Date.now();
 }
 
-export function startQuiz(questionsData) {
+export function startQuiz(questionsData: QuestionsData) {
   if (quizSession.participants.length === 0) {
     throw new Error('No participants joined yet');
   }
@@ -157,8 +209,12 @@ export function startQuiz(questionsData) {
   return questions[0];
 }
 
-export function nextQuestion(questionsData) {
-  quizSession.currentQuestionIndex++;
+export function nextQuestion(questionsData: QuestionsData) {
+  if (quizSession.currentQuestionIndex === null) {
+    quizSession.currentQuestionIndex = 0;
+  } else {
+    quizSession.currentQuestionIndex++;
+  }
   quizSession.questionLocked = false;
   quizSession.lockCountdown = null;
   const questions = questionsData.moral_quiz || [];
@@ -194,21 +250,33 @@ export function resetQuiz() {
   };
 }
 
-export function calculateResults(questionsData) {
+export function calculateResults(questionsData: QuestionsData) {
   const questions = questionsData.moral_quiz || [];
   const theories = questionsData.ethical_theories || {};
-  const results = {};
+  const results: Record<string, {
+    participant: {
+      id: string;
+      name: string;
+      icon: string;
+    };
+    theory: {
+      name: string;
+      description: string;
+    };
+    tally: Record<string, number>;
+    answerHistory: AnswerHistoryEntry[];
+  }> = {};
 
   quizSession.participants.forEach(participant => {
-    const theoryTally = {};
+    const theoryTally: Record<string, number> = {};
     
     Object.keys(participant.answers).forEach(questionIdStr => {
       const questionId = parseInt(questionIdStr);
       const answer = participant.answers[questionId];
       const question = questions.find(q => q.id === questionId);
-      
-      if (question && question.answers[answer]) {
-        const theoryAlignment = question.answers[answer].theory_alignment || [];
+
+      if (question && question.answers?.[answer]) {
+        const theoryAlignment = question.answers?.[answer]?.theory_alignment || [];
         
         theoryAlignment.forEach(theory => {
           if (!theoryTally[theory]) {
